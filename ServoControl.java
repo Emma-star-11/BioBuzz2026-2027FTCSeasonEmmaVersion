@@ -1,8 +1,4 @@
-package org.firstinspires.ftc.teamcode;
-
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gamepad1;
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -13,7 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 //MAKE SURE TO CONFIGURE DRIVER HUB TO THESE NAMES!!!!!!!!!
-@TeleOp(name="Servo Flower Arm R", group= "TeleOp")
+@TeleOp(name="TeleOp - Field Centric Mecanum", group= "TeleOp")
 public class ServoControl extends OpMode {
 
     //FLOWER ARM
