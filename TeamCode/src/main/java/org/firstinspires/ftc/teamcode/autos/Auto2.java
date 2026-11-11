@@ -1,15 +1,9 @@
-package org.firstinspires.ftc.teamcode.Autos;
+package org.firstinspires.ftc.teamcode.autos;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
-import com.sun.tools.javac.code.Scope;
-
-import org.firstinspires.ftc.teamcode.subsystems.Shooter;
-
-import javax.xml.xpath.XPath;
 
 @Autonomous (name= "Auto2", group= "Autonomous")
 public class Auto2 {
