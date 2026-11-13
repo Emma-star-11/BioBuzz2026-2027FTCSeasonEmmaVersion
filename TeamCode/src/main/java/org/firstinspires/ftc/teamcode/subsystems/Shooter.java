@@ -14,10 +14,10 @@ public class Shooter extends SubsystemBase {
     private DcMotor shooterM2;
     private Servo servoH;
 
-    public Shooter(HardwareMap hwMap) {
-        shooterM1 = hwMap.get(DcMotor.class, "shooterM1");
-        shooterM2 = hwMap.get(DcMotor.class, "shooterM2");
-        servoH = hwMap.get(Servo.class, "sH");
+    public Shooter(HardwareMap hardwareMap) {
+        shooterM1 = hardwareMap.get(DcMotor.class, "shooterM1");
+        shooterM2 = hardwareMap.get(DcMotor.class, "shooterM2");
+        servoH = hardwareMap.get(Servo.class, "sH");
     }
 
     public Shooter(DcMotor shooterM1, DcMotor shooterM2, Servo servoH) {

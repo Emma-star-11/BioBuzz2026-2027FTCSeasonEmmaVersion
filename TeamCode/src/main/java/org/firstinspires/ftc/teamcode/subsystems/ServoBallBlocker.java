@@ -5,6 +5,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -14,10 +15,11 @@ import com.qualcomm.robotcore.hardware.Servo;
 //MAKE SURE TO CONFIGURE DRIVER HUB TO THESE NAMES!!!!!!!!!
 public class ServoBallBlocker extends SubsystemBase{
         Servo BBservo = null;
-public ServoBallBlocker() {
+public ServoBallBlocker(HardwareMap hardwareMap) {
+
     BBservo = hardwareMap.get(Servo.class, "sB");
 }
-public void telopbutton(){
+public void telopButton(){
         if (gamepad1.bWasPressed()) {
             BBservo.setPosition(0.0);
             ;

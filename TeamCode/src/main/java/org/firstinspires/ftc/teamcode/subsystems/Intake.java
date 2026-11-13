@@ -5,11 +5,13 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 public class Intake extends SubsystemBase {
     private DcMotor intakeL;
     private DcMotor IntakeL2;
 
-    public Intake() {
+    public Intake(HardwareMap hardwareMap) {
 
         intakeL = hardwareMap.get(DcMotor.class, "intakeL");
         IntakeL2 = hardwareMap.get(DcMotor.class, "IntakeL2");

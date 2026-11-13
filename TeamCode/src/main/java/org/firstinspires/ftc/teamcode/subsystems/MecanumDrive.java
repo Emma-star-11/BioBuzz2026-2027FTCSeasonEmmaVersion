@@ -1,23 +1,30 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 //@TeleOp(name = "TeleOp - Field Centric Mecanum", group = "TeleOp")
-public class MecanumDrive extends LinearOpMode {
-
-    @Override
-    public void runOpMode() {
+public class MecanumDrive extends SubsystemBase {
+     private DcMotor leftFront;
+     private DcMotor leftBack;
+     private DcMotor rightFront;
+     private DcMotor rightBack;
+     private IMU  imu;
+    public MecanumDrive(HardwareMap hardwareMap) {
         // Initialize motors using hardware map names: lF, lB, rF, rB
-        DcMotor leftFront = hardwareMap.get(DcMotor.class, "lF");
-        DcMotor leftBack = hardwareMap.get(DcMotor.class, "lB");
-        DcMotor rightFront = hardwareMap.get(DcMotor.class, "rF");
-        DcMotor rightBack = hardwareMap.get(DcMotor.class, "rB");
+        leftFront = hardwareMap.get(DcMotor.class, "lF");
+        leftBack = hardwareMap.get(DcMotor.class, "lB");
+        rightFront = hardwareMap.get(DcMotor.class, "rF");
+        rightBack = hardwareMap.get(DcMotor.class, "rB");
 
         // Motor directions
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -32,7 +39,7 @@ public class MecanumDrive extends LinearOpMode {
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Initialize IMU
-        IMU imu = hardwareMap.get(IMU.class, "imu");
+        imu = hardwareMap.get(IMU.class, "imu");
         IMU.Parameters parameters = new IMU.Parameters(
                 new RevHubOrientationOnRobot(
                         RevHubOrientationOnRobot.LogoFacingDirection.UP,
@@ -40,13 +47,9 @@ public class MecanumDrive extends LinearOpMode {
                 )
         );
         imu.initialize(parameters);
+    }
 
-        telemetry.addData("Status", "Initialized");
-        telemetry.update();
-
-        waitForStart();
-
-        while (opModeIsActive()) {
+        public void telopButton(Gamepad gamepad1, Telemetry telemetry) {
             double y = -gamepad1.left_stick_y; // Reversed stick Y on FTC gamepads
             double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double turn = gamepad1.right_stick_x;
@@ -79,4 +82,3 @@ public class MecanumDrive extends LinearOpMode {
             telemetry.update();
         }
     }
-}
